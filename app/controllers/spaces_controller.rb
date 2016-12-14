@@ -17,6 +17,7 @@ class SpacesController < ApplicationController
   # POST /spaces
   def create
     @space = Space.new(space_params)
+    # @space.user = current_user
 
     if @space.save
       render json: @space, status: :created, location: @space
@@ -58,6 +59,6 @@ class SpacesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def space_params
-    params.require(:space).permit(:lat, :lng, :image, :width, :length, :details, :user_id)
+    params.require(:space).permit(:lat, :lng, :image, :width, :length, :details, :user_id, :name)
   end
 end
